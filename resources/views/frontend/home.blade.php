@@ -122,7 +122,7 @@
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
-                            <a href="product-details.html">
+                            <a href="{{route('frontend.detail',$item->id)}}">
                               <img class="default-img" src="{{asset('storage/'.$item->photo)}}" alt="#">
                               <img class="hover-img" src="{{asset('storage/'.$item->photo)}}" alt="#">
                             </a>

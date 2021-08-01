@@ -99,7 +99,7 @@
             <div class="col-lg-2 col-md-2 col-12">
               <!-- Logo -->
               <div class="logo">
-                <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                <a href="index.html"><img src="{{ asset('frontend/images/logo.png')}}" alt="logo"></a>
               </div>
               <!--/ End Logo -->
               <!-- Search Form -->
@@ -821,9 +821,9 @@
         }
       }
     })
-
+ 
     // checkout process
-    $('.checkout').click(function(){
+    $(document).on("click",".checkout",function(){
       // alert('hi');
       $.ajaxSetup({
         headers: {
@@ -834,17 +834,19 @@
       var shop_str=localStorage.getItem('eshop');
       var total=$(this).data('total');
 
-      $.post("/order",{data:shop_str,total:total},function(res){
+      $.post("/order-management/order",{data:shop_str,total:total},function(res){
         console.log(res);
 
         // remove LocalStorage
         localStorage.removeItem('eshop');
 
+        $('#total_amount').html(0+' Ks');
+
         // use sweetalert
         getData();
         count();
-      })
-    })
+      });
+    });
 
     // ID Modal Passing Data
     $(document).on("click",".modal-view",function(){

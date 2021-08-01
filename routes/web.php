@@ -26,7 +26,7 @@ Route::prefix('data-management')->middleware('auth','role:admin')->group(functio
 	Route::resource('item','ItemController');	
 });
 
-Route::prefix('order-management')->group(function () {
+Route::prefix('order-management')->middleware('auth','role:customer|admin')->group(function () {
 	Route::resource('order','OrderController');
 });
 
@@ -37,6 +37,7 @@ Route::prefix('frontend')->group(function () {
   Route::get('home', 'FrontendController@home')->name('frontend.home');
   Route::get('shop', 'FrontendController@shop')->name('frontend.shop');
   Route::get('cart', 'FrontendController@cart')->name('frontend.cart');
+  Route::get('item/{id}', 'FrontendController@detail')->name('frontend.detail');
 });
 
 // Authentication

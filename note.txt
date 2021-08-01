@@ -15,11 +15,13 @@ frontend
 ---------
 
 - login user name and login/logout (done)
-- item detail->id pass
+- item detail->id pass (done)
+
+- component
+
 - cartpage -> note
 - searchbox - optional
 - customer -> his order want to look
-- component
 - sweetalert (design ui)
 
 Git

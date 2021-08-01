@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -49,7 +50,7 @@ class OrderController extends Controller
             $order->total = $request->total;
             $order->note = '';
             $order->status = 0;
-            $order->user_id = 1;
+            $order->user_id = Auth::id();
             $order->save();
 
             // insert item_order
