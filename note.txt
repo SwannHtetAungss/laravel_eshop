@@ -1,0 +1,27 @@
+backend
+---------
+
+- backend-->sidebar-->click (done)
+- order -->ui (done)
+- backend-->oldphoto (done)
+- backend-->ui-->'storage/'. (done)
+
+- don't write again valid data just like register page
+- backend-->order-->detail
+- ck editor (textbox input) - optional
+
+frontend
+---------
+
+- login user name and login/logout 
+- item detail->id pass
+- cartpage -> note
+- searchbox - optional
+- customer -> his order want to look
+- component
+- sweetalert (design ui)
+
+Git
+----
+
+- create Repo
