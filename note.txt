@@ -16,8 +16,7 @@ frontend
 
 - login user name and login/logout (done)
 - item detail->id pass (done)
-
-- component
+- component (done)
 
 - cartpage -> note
 - searchbox - optional
