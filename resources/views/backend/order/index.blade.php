@@ -52,7 +52,7 @@
                 </td>
                 <td>{{number_format($order->total)}}</td>
                 <td>
-                  <a href="#" class="btn btn-warning btn-sm">Detail</a>
+                  <a href="{{route('order.show',$order->id)}}" class="btn btn-warning btn-sm">Detail</a>
                   <a href="#" class="btn btn-danger btn-sm">Confirm</a>
                 </td>
               </tr>

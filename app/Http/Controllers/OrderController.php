@@ -69,7 +69,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('backend.order.detail');
     }
 
     /**
@@ -80,7 +80,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        // return view('backend.order.detail');
     }
 
     /**

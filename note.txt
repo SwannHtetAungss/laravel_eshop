@@ -5,15 +5,16 @@ backend
 - order -->ui (done)
 - backend-->oldphoto (done)
 - backend-->ui-->'storage/'. (done)
+- backend-->order-->detail (half/done)
+
 
 - don't write again valid data just like register page
-- backend-->order-->detail
 - ck editor (textbox input) - optional
 
 frontend
 ---------
 
-- login user name and login/logout 
+- login user name and login/logout (done)
 - item detail->id pass
 - cartpage -> note
 - searchbox - optional
@@ -24,4 +25,4 @@ frontend
 Git
 ----
 
-- create Repo
+- create Repo (done)
