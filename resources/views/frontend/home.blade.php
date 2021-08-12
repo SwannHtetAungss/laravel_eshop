@@ -110,7 +110,7 @@
               </div>
               <div class="tab-content" id="myTabContent">
                 @php
-                  $i = 1;
+                  $i = 1; 
                 @endphp
                 @foreach($categories as $category)
                 <!-- Start Single Tab -->
