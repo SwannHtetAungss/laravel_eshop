@@ -99,7 +99,7 @@
             <div class="col-lg-2 col-md-2 col-12">
               <!-- Logo -->
               <div class="logo">
-                <a href="index.html"><img src="{{ asset('frontend/images/logo.png')}}" alt="logo"></a>
+                <a href="{{route('frontend.home')}}"><img src="{{ asset('frontend/images/logo.png')}}" alt="logo"></a>
               </div>
               <!--/ End Logo -->
               <!-- Search Form -->
@@ -192,6 +192,7 @@
                           <span class="total-amount" id="total_amount"> </span>
                         </div>
                         <a href="{{ route('login') }}" class="btn animate">Login</a>
+                        <a href="{{ route('register') }}" class="btn animate">Register</a>
                       </div>
                     @else
                       <div class="dropdown-cart-header">
@@ -431,7 +432,7 @@
                             <!--/ End Input Order -->
                           </div>
                           <div class="add-to-cart">
-                            <a href="#" class="btn addtocartBtn" data-id="" data-name="" data-price="" data-discount="" data-photo="" data-codeno="" data-description="">Add to cart</a>
+                            <a href="#" class="btn addtocartBtn" data-id="" data-name="" data-price="" data-discount="" data-photo="" data-codeno="" data-description="" data-multi="">Add to cart</a>
                             <a href="#" class="btn min"><i class="ti-heart"></i></a>
                             <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
                           </div>
@@ -601,7 +602,25 @@
       var codeno=$(this).data('codeno');
       var description=$(this).data('description');
 
-      var item={
+      var multi=$(this).data('multi');
+      var qty=1;
+
+      if(multi){
+
+        var qty = Number($('.input-number').val());
+
+        var item={
+              id : id,
+              name : name,
+              price : price,
+              discount : discount,
+              photo : photo,
+              codeno : codeno,
+              description : description,
+              qty : qty
+            };
+      }else{
+        var item={
               id : id,
               name : name,
               price : price,
@@ -611,6 +630,7 @@
               description : description,
               qty : 1
             };
+      }
 
       var shop_str=localStorage.getItem('eshop');
       var shop_arr;
@@ -626,7 +646,7 @@
       $.each(shop_arr,function(i,v){
         if(id==v.id){
 
-          v.qty++;
+          v.qty+=qty;
           status=true;
         }
       })
@@ -856,6 +876,7 @@
       var discount=$(this).data('discount');
       var description=$(this).data('description');
       var photo=$(this).data('photo');
+      var viewphoto="http://localhost:8000/storage/"+photo;
       var codeno=$(this).data('codeno');
 
       // alert(photo);
@@ -869,7 +890,7 @@
       }
       $('.modal-body #item_description').html(description);
       // $('.modal-body #item_photo').html(photo);
-      $('.modal-body img').attr("src",photo);
+      $('.modal-body img').attr("src", viewphoto);
 
 
       // add to cart button
@@ -880,6 +901,7 @@
       $('.addtocartBtn').attr("data-description",description);
       $('.addtocartBtn').attr("data-photo",photo);
       $('.addtocartBtn').attr("data-codeno",codeno);
+      $('.modal-body .addtocartBtn').attr("data-multi","multi");
 
       // - qty +
       // var modal_qty = $('.input-qty').val();

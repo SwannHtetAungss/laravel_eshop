@@ -38,6 +38,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {   
+        // dd($request);
         DB::transaction(function () use ($request) {
             $shop_arr=json_decode($request->data);
             // dd($shop_arr);

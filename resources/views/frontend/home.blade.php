@@ -60,7 +60,7 @@
         <!-- Single Banner  -->
         <div class="col-lg-4 col-12">
           <div class="single-banner tab-height">
-            <img src="{{asset('frontend/images/men_collection.jpeg')}}" alt="#">
+            <img src="{{asset('frontend/images/girl_collection.jpg')}}" alt="#">
             <div class="content">
               <p>Flash Sale</p>
               <h3>Mid Season <br> Up to <span>40%</span> Off</h3>
@@ -147,7 +147,7 @@
         <!-- Single Banner  -->
         <div class="col-lg-6 col-md-6 col-12">
           <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
+            <img src="{{asset('frontend/images/men-item.jpg')}}" alt="#">
             <div class="content">
               <p>Man's Collectons</p>
               <h3>Man's items <br>Up to<span> 50%</span></h3>
@@ -159,7 +159,7 @@
         <!-- Single Banner  -->
         <div class="col-lg-6 col-md-6 col-12">
           <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
+            <img src="{{asset('frontend/images/shoe-women.jpg')}}" alt="#">
             <div class="content">
               <p>shoes women</p>
               <h3>mid season <br> up to <span>70%</span></h3>
@@ -187,7 +187,42 @@
                 <div class="col-12">
                     <div class="owl-carousel popular-slider">
             <!-- Start Single Product -->
+
+            @foreach($allitems as $allitem)
             <div class="single-product">
+              <div class="product-img">
+                <a href="{{route('frontend.detail',$allitem->id)}}">
+                  <img class="default-img" src="{{asset("storage/$allitem->photo")}}" alt="#">
+                  <img class="hover-img" src="{{asset("storage/$allitem->photo")}}" alt="#">
+                </a>
+                <div class="button-head">
+                  <div class="product-action">
+                    <a data-toggle="modal" class="modal-view" data-target="#exampleModal" title="Quick View" href="#" data-id="{{$allitem->id}}" data-name="{{$allitem->name}}" data-price="{{$allitem->price}}" data-discount="{{$allitem->discount}}" data-description="{{$allitem->description}}" data-photo="{{$allitem->photo}}" data-codeno="{{$allitem->codeno}}">
+                      <i class=" ti-eye"></i><span>Quick Shop</span></a>
+                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                  </div>
+                  <div class="product-action-2">
+                    {{-- <a title="Add to cart" href="#">Add to cart</a> --}}
+                    <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="<?=$allitem->id?>" data-name="<?=$allitem->name?>" data-price="<?=$allitem->price?>" data-discount="<?=$allitem->discount?>" data-photo="<?=$allitem->photo?>" data-codeno="<?=$allitem->codeno?>" data-description="<?=$allitem->description?>">Add to cart</a>
+                  </div>
+                </div>
+              </div>
+              <div class="product-content">
+                <h3><a href="{{route('frontend.detail',$allitem->id)}}"> {{$allitem->name}} </a></h3>
+                <div class="product-price">
+                  @if($allitem->discount)
+                    <span class="old">$ {{$allitem->price}}</span>
+                    <span>$ {{$allitem->discount}}</span>
+                  @else
+                    <span>$ {{$allitem->price}}</span>
+                  @endif
+                </div>
+              </div>
+            </div>
+            @endforeach
+
+            {{-- <div class="single-product">
               <div class="product-img">
                 <a href="product-details.html">
                   <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -212,87 +247,9 @@
                   <span>$50.00</span>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
-                  </div>
-                </div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                  <span class="new">New</span>
-                                </a>
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
-                  </div>
-                </div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Pink Show</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
-                  </div>
-                </div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-            <!-- End Single Product -->
+            
                     </div>
                 </div>
             </div>
@@ -312,60 +269,36 @@
               </div>
             </div>
           </div>
+
           <!-- Start Single List  -->
+          @foreach($onsales as $onsale)
           <div class="single-list">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                  <img src="{{asset("storage/$onsale->photo")}}" alt="#">
+                  <a title="Add to cart" class="addtocartBtn buy text-decoration-none" data-id="<?=$onsale->id?>" data-name="<?=$onsale->name?>" data-price="<?=$onsale->price?>" data-discount="<?=$onsale->discount?>" data-photo="<?=$onsale->photo?>" data-codeno="<?=$onsale->codeno?>" data-description="<?=$onsale->description?>">
+                    <i class="fa fa-shopping-bag"></i>
+                  </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12 no-padding">
                 <div class="content">
-                  <h4 class="title"><a href="#">Licity jelly leg flat Sandals</a></h4>
-                  <p class="price with-discount">$59</p>
+                  <h4 class="title"><a href="{{route('frontend.detail',$onsale->id)}}">{{$onsale->name}}</a></h4>
+                  <p class="price with-discount">
+                    @if($onsale->discount)
+                      ${{$onsale->discount}}
+                    @else
+                      ${{$onsale->price}}
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+          @endforeach
           <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$44</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$89</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
+          
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="row">
@@ -375,123 +308,79 @@
               </div>
             </div>
           </div>
+
           <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+          @foreach($bestsellers as $bestseller)
+            @foreach($allitems as $allitem)
+              @if($allitem->id == $bestseller->item_id)
+                <div class="single-list">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <div class="list-image overlay">
+                        <img src="{{asset("storage/$allitem->photo")}}" alt="#">
+                        <a title="Add to cart" class="addtocartBtn buy text-decoration-none" data-id="<?=$allitem->id?>" data-name="<?=$allitem->name?>" data-price="<?=$allitem->price?>" data-discount="<?=$allitem->discount?>" data-photo="<?=$allitem->photo?>" data-codeno="<?=$allitem->codeno?>" data-description="<?=$allitem->description?>">
+                          <i class="fa fa-shopping-bag"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 no-padding">
+                      <div class="content">
+                        <h5 class="title"><a href="{{route('frontend.detail',$allitem->id)}}"> {{$allitem->name}} </a></h5>
+                        <p class="price with-discount">
+                          @if($allitem->discount)
+                            ${{$allitem->discount}}
+                          @else
+                            ${{$allitem->price}}
+                          @endif
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$65</p>
-                </div>
-              </div>
-            </div>
-          </div>
+              @endif
+            @endforeach
+          @endforeach
           <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$33</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$77</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
+
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="row">
             <div class="col-12">
               <div class="shop-section-title">
-                <h1>Top viewed</h1>
+                <h1>Latest Items</h1>
               </div>
             </div>
           </div>
+
           <!-- Start Single List  -->
+          @foreach($latest_items as $latest_item)
           <div class="single-list">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                  <img src="{{asset("storage/$latest_item->photo")}}" alt="#">
+                  <a title="Add to cart" class="addtocartBtn buy text-decoration-none" data-id="<?=$latest_item->id?>" data-name="<?=$latest_item->name?>" data-price="<?=$latest_item->price?>" data-discount="<?=$latest_item->discount?>" data-photo="<?=$latest_item->photo?>" data-codeno="<?=$latest_item->codeno?>" data-description="<?=$latest_item->description?>">
+                    <i class="fa fa-shopping-bag"></i>
+                  </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12 no-padding">
                 <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$22</p>
+                  <h5 class="title"><a href="{{route('frontend.detail',$latest_item->id)}}"> {{$latest_item->name}} </a></h5>
+                  <p class="price with-discount">
+                    @if($latest_item->discount)
+                      ${{$latest_item->discount}}
+                    @else
+                      ${{$latest_item->price}}
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$35</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
-          <!-- Start Single List  -->
-          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$99</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Single List  -->
+          @endforeach
+          
         </div>
       </div>
     </div>
@@ -505,7 +394,7 @@
         <div class="row">
           <div class="col-lg-6 col-12 padding-right">
             <div class="image">
-              <img src="https://via.placeholder.com/750x590" alt="#">
+              <img src="{{asset('frontend/images/beautiful-dress.jpg')}}" alt="#">
             </div>  
           </div>  
           <div class="col-lg-6 col-12 padding-left">

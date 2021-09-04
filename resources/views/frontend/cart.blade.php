@@ -8,8 +8,8 @@
         <div class="col-12">
           <div class="bread-inner">
             <ul class="bread-list">
-              <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-              <li class="active"><a href="blog-single.html">Cart</a></li>
+              <li><a href="{{route('frontend.home')}}">Home<i class="ti-arrow-right"></i></a></li>
+              <li class="active"><a href="#">Cart</a></li>
             </ul>
           </div>
         </div>
@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-12">
           <!-- Shopping Summery -->
-          <table class="table shopping-summery">
+          <table class="table shopping-summery table-responsive">
             <thead>
               <tr class="main-hading">
                 <th>PRODUCT</th>
@@ -84,19 +84,21 @@
   <!--/ End Shopping Cart -->
 
   <!-- No Shopping Cart Div -->
-  <div class="row mt-5 noneshoppingcart_div text-center">
-    
-    <div class="col-12">
-      <h5 class="text-center"> There are no items in this cart </h5>
-    </div>
+  <div class="container">
+    <div class="row mt-5 noneshoppingcart_div text-center">
+      
+      <div class="col-12">
+        <h5 class="text-center"> There are no items in this cart </h5>
+      </div>
 
-    <div class="col-12 mt-5 ">
-      <a href="{{route('frontend.home')}}" class="btn btn-warning px-3 text-white" > 
-        <i class="icofont-shopping-cart"></i>
-        Continue Shopping 
-      </a>
-    </div>
+      <div class="col-12 mt-5 ">
+        <a href="{{route('frontend.home')}}" class="btn btn-warning px-3 text-white" > 
+          <i class="icofont-shopping-cart"></i>
+          Continue Shopping 
+        </a>
+      </div>
 
+    </div>
   </div>
   <!-- End of No shopping cart div -->
 

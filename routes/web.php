@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +27,9 @@ Route::prefix('data-management')->middleware('auth','role:admin')->group(functio
 	Route::resource('item','ItemController');	
 });
 
-Route::prefix('order-management')->middleware('auth','role:customer|admin')->group(function () {
+Route::prefix('order-management')->middleware('auth','role:admin|customer')->group(function () {
 	Route::resource('order','OrderController');
+	// Route::post('order','OrderController');
 });
 
 
