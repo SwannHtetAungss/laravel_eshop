@@ -7,6 +7,7 @@ use App\Item;
 use App\Category;
 use App\Order;
 use Illuminate\Support\Facades\DB;
+use App\Subcategory;
 
 class FrontendController extends Controller
 {
@@ -31,7 +32,23 @@ class FrontendController extends Controller
 
     public function shop($value='')
     {
-        return view('frontend.shop');
+        $categories = Category::has('items')->get();
+        $items = Item::all();
+        return view('frontend.shop',compact('categories','items'));
+    }
+
+    public function categoryFilter(Request $request)
+    {
+        
+        $cat_id=$request->cat_id;
+        // dd($cat_id);
+
+        $subcategories = Subcategory::where('category_id',$cat_id)->get();
+        $items = Item::all();
+        
+        // return $subcategories;
+
+        return ['subcategories'=>$subcategories,'items'=>$items];
     }
 
     public function cart($value='')

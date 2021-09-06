@@ -77,28 +77,7 @@
                           <div class="quickview-peragraph mb-3">
                               <p> {{$item->description}} </p>
                           </div>
-                          {{-- <div class="size">
-                            <div class="row">
-                              <div class="col-lg-6 col-12">
-                                <h5 class="title">Size</h5>
-                                <select>
-                                  <option selected="selected">s</option>
-                                  <option>m</option>
-                                  <option>l</option>
-                                  <option>xl</option>
-                                </select>
-                              </div>
-                              <div class="col-lg-6 col-12">
-                                <h5 class="title">Color</h5>
-                                <select>
-                                  <option selected="selected">orange</option>
-                                  <option>purple</option>
-                                  <option>black</option>
-                                  <option>pink</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div> --}}
+
                           <div class="quantity">
                             <!-- Input Order -->
                             <div class="input-group">

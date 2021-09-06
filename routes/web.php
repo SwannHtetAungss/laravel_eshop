@@ -40,6 +40,7 @@ Route::prefix('frontend')->group(function () {
   Route::get('shop', 'FrontendController@shop')->name('frontend.shop');
   Route::get('cart', 'FrontendController@cart')->name('frontend.cart');
   Route::get('item/{id}', 'FrontendController@detail')->name('frontend.detail');
+  Route::post('category-filter', 'FrontendController@categoryFilter')->name('frontend.category-filter');
 });
 
 // Authentication

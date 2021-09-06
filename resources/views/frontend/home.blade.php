@@ -186,69 +186,41 @@
             <div class="row">
                 <div class="col-12">
                     <div class="owl-carousel popular-slider">
-            <!-- Start Single Product -->
+                    <!-- Start Single Product -->
 
-            @foreach($allitems as $allitem)
-            <div class="single-product">
-              <div class="product-img">
-                <a href="{{route('frontend.detail',$allitem->id)}}">
-                  <img class="default-img" src="{{asset("storage/$allitem->photo")}}" alt="#">
-                  <img class="hover-img" src="{{asset("storage/$allitem->photo")}}" alt="#">
-                </a>
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" class="modal-view" data-target="#exampleModal" title="Quick View" href="#" data-id="{{$allitem->id}}" data-name="{{$allitem->name}}" data-price="{{$allitem->price}}" data-discount="{{$allitem->discount}}" data-description="{{$allitem->description}}" data-photo="{{$allitem->photo}}" data-codeno="{{$allitem->codeno}}">
-                      <i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    {{-- <a title="Add to cart" href="#">Add to cart</a> --}}
-                    <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="<?=$allitem->id?>" data-name="<?=$allitem->name?>" data-price="<?=$allitem->price?>" data-discount="<?=$allitem->discount?>" data-photo="<?=$allitem->photo?>" data-codeno="<?=$allitem->codeno?>" data-description="<?=$allitem->description?>">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-content">
-                <h3><a href="{{route('frontend.detail',$allitem->id)}}"> {{$allitem->name}} </a></h3>
-                <div class="product-price">
-                  @if($allitem->discount)
-                    <span class="old">$ {{$allitem->price}}</span>
-                    <span>$ {{$allitem->discount}}</span>
-                  @else
-                    <span>$ {{$allitem->price}}</span>
-                  @endif
-                </div>
-              </div>
-            </div>
-            @endforeach
-
-            {{-- <div class="single-product">
-              <div class="product-img">
-                <a href="product-details.html">
-                  <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                  <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                  <span class="out-of-stock">Hot</span>
-                </a>
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-content">
-                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-                <div class="product-price">
-                  <span class="old">$60.00</span>
-                  <span>$50.00</span>
-                </div>
-              </div>
-            </div> --}}
-            <!-- End Single Product -->
+                    @foreach($allitems as $allitem)
+                    <div class="single-product">
+                      <div class="product-img">
+                        <a href="{{route('frontend.detail',$allitem->id)}}">
+                          <img class="default-img" src="{{asset("storage/$allitem->photo")}}" alt="550x750">
+                          <img class="hover-img" src="{{asset("storage/$allitem->photo")}}" alt="550x750">
+                        </a>
+                        <div class="button-head">
+                          <div class="product-action">
+                            <a data-toggle="modal" class="modal-view" data-target="#exampleModal" title="Quick View" href="#" data-id="{{$allitem->id}}" data-name="{{$allitem->name}}" data-price="{{$allitem->price}}" data-discount="{{$allitem->discount}}" data-description="{{$allitem->description}}" data-photo="{{$allitem->photo}}" data-codeno="{{$allitem->codeno}}">
+                              <i class=" ti-eye"></i><span>Quick Shop</span></a>
+                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                          </div>
+                          <div class="product-action-2">
+                            {{-- <a title="Add to cart" href="#">Add to cart</a> --}}
+                            <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="<?=$allitem->id?>" data-name="<?=$allitem->name?>" data-price="<?=$allitem->price?>" data-discount="<?=$allitem->discount?>" data-photo="<?=$allitem->photo?>" data-codeno="<?=$allitem->codeno?>" data-description="<?=$allitem->description?>">Add to cart</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <h3><a href="{{route('frontend.detail',$allitem->id)}}"> {{$allitem->name}} </a></h3>
+                        <div class="product-price">
+                          @if($allitem->discount)
+                            <span class="old">$ {{$allitem->price}}</span>
+                            <span>$ {{$allitem->discount}}</span>
+                          @else
+                            <span>$ {{$allitem->price}}</span>
+                          @endif
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
             
                     </div>
                 </div>

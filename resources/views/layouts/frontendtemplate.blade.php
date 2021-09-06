@@ -591,6 +591,7 @@
     count();
     getData();
 
+    // $('#item_filter').on('click','.addtocartBtn',function(){
     $('.addtocartBtn').on('click',function(){
       // alert('hi');
       
@@ -868,6 +869,96 @@
       });
     });
 
+    // shop page filter process
+    $(document).on("click",".category_filter",function(){
+      // alert('hi');
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      var cat_id=$(this).data('id');
+      // alert(cat_id);
+
+      $.post("/frontend/category-filter",{cat_id:cat_id},function(res){
+        // console.log(res.items);
+
+        var subcategories = res.subcategories;
+        var items = res.items;
+        var html='';
+
+        $.each(subcategories,function(i,sub){
+          $.each(items,function(i,item){
+            var id = item.id;
+            if(item.subcategory_id==sub.id){
+              // console.log(item.name);
+              if(item.discount){
+              html +=`<div class="col-lg-4 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-img">
+                    <a href="product-details.html">
+                      <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                      <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                    </a>
+                    <div class="button-head">
+                      <div class="product-action">
+                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                      </div>
+                      <div class="product-action-2">
+                        <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-photo="${item.photo}" data-codeno="${item.codeno}" data-description="${item.description}">Add to cart</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-content">
+                    <h3><a href="item/${id}"> ${item.name} </a></h3>
+                    <div class="product-price">
+                      <span class="old"> $ ${item.price} </span>
+                      <span> $ ${item.discount} </span>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+              }else{
+                html +=`<div class="col-lg-4 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-img">
+                    <a href="product-details.html">
+                      <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                      <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                    </a>
+                    <div class="button-head">
+                      <div class="product-action">
+                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                      </div>
+                      <div class="product-action-2">
+                        <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-photo="${item.photo}" data-codeno="${item.codeno}" data-description="${item.description}">Add to cart</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-content">
+                    <h3><a href="item/${id}"> ${item.name} </a></h3>
+                    <div class="product-price">
+                      <span> $ ${item.price} </span>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+              }
+            }
+          });
+
+        });
+
+        $('#item_filter').html(html);
+        
+      });
+    });
+
     // ID Modal Passing Data
     $(document).on("click",".modal-view",function(){
       var id=$(this).data('id');
@@ -906,7 +997,7 @@
       // - qty +
       // var modal_qty = $('.input-qty').val();
       // alert(qty);
-    })
+    });
 
   });
 
