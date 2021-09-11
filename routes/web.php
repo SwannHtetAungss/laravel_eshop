@@ -43,6 +43,10 @@ Route::prefix('frontend')->group(function () {
   Route::post('category-filter', 'FrontendController@categoryFilter')->name('frontend.category-filter');
 });
 
+// Search
+Route::post('/search','SearchController@search');
+
+
 // Authentication
 Auth::routes();
 

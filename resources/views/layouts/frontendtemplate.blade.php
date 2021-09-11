@@ -107,8 +107,8 @@
                 <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                 <!-- Search Form -->
                 <div class="search-top">
-                  <form class="search-form">
-                    <input type="text" placeholder="Search here..." name="search">
+                  <form>
+                    <input type="text" placeholder="Search here..." name="search" id="">
                     <button value="search" type="submit"><i class="ti-search"></i></button>
                   </form>
                 </div>
@@ -117,22 +117,31 @@
               <!--/ End Search Form -->
               <div class="mobile-nav"></div>
             </div>
+
             <div class="col-lg-8 col-md-7 col-12">
               <div class="search-bar-top">
                 <div class="search-bar">
-                  <select>
+                  {{-- <select>
                     <option selected="selected">All Category</option>
                     <option>watch</option>
                     <option>mobile</option>
                     <option>kid’s item</option>
-                  </select>
-                  <form>
-                    <input name="search" placeholder="Search Products Here....." type="search">
-                    <button class="btnn"><i class="ti-search"></i></button>
+                  </select> --}}
+                  <form action="#" method="get">
+                    <div class="header-search-wrapper search-wrapper-wide">
+                      <input name="search" placeholder="Search Products Here....." type="search" id="search">
+                      <button class="btnn"><i class="ti-search"></i></button>
+                    </div>
+                    <div id="search-dropdown" class="search-dropdown dropdown-search-products">
+                      
+                      
+
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
+
             <div class="col-lg-2 col-md-2 col-12">
               <div class="right-bar">
                 <!-- Search Form -->
@@ -998,6 +1007,107 @@
       // var modal_qty = $('.input-qty').val();
       // alert(qty);
     });
+
+    
+
+
+    // Search process
+
+    $('#search').on('keyup',function(){
+
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      var searchData = $(this).val();
+      // console.log(searchData);
+
+      $.ajax({
+        url: "/search",
+        method: "POST",
+        data: {
+          data: searchData
+        },
+        dataType: "json",
+        beforeSend: function() {
+          $("#search-dropdown").html(`
+            <div class="text-center">
+              <div class="spinner-border my-5" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          `);
+        },
+
+        success: function(res) {
+
+          // console.log(res.length);
+
+          var html = "";
+
+          if (res.length > 0) {
+              $.each(res, function(i, data) {
+                  if (data.discount) {
+                      price_html = `
+                        <span class="product-search-price"><strike>${data.price.toLocaleString()} Ks</strike></span>
+                        <span class="product-search-price new-price ml-2">${data.discount.toLocaleString()} Ks</span>
+                      `;
+                  } else {
+                      price_html = `
+                        <span class="product-search-price">${data.price.toLocaleString()} Ks</span>
+                      `;
+                  }
+
+                  html += `
+                    <div class="product">
+                      <figure class="search-image-container">
+                        <a href="" class="product-image">
+                          <img src="{{ asset('storage/${data.photo}') }}"
+                            alt="${data.name}">
+                        </a>
+                      </figure>
+                      <div class="product-search-details">
+                        <h4 class="product-search-title">
+                          <a href="item/${data.id}">${data.name}</a>
+                        </h4>
+                        ${price_html}
+                      </div>
+                    </div>
+                  `;
+              });
+
+              $("#search-dropdown")
+                  .html(html)
+                  .addClass("show");
+          } else {
+              html += `
+                <div class='product-search-title text-center my-5'>
+                  <i class='icon-exclamation-circle mr-3'></i>No products were found with your search keyword.
+                </div>
+              `;
+
+              $("#search-dropdown")
+                  .html(html)
+                  .addClass("show");
+          }
+            
+        }
+
+      });
+
+    });
+
+
+    // Hiding live search products on click outside
+    $(document).on("click", function(e) {
+        if (!($(e.target).closest("#search-dropdown").length > 0)) {
+            $("#search-dropdown").removeClass("show");
+        }
+    });
+
+
 
   });
 

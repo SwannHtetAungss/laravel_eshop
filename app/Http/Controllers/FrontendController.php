@@ -61,4 +61,6 @@ class FrontendController extends Controller
         $item=Item::find($id);
         return view('frontend.detail',compact('item'));
     }
+
+
 }
