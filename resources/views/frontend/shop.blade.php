@@ -169,7 +169,7 @@
                 <!--/ End Shop Top -->
               </div>
             </div>
-            <div class="row" id="item_filter">
+            <div class="row addtocard-item" id="item_filter">
               @foreach($items as $item)
                 <div class="col-lg-4 col-md-6 col-12">
                   <div class="single-product">

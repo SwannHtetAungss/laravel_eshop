@@ -95,7 +95,7 @@
                             </div>
                             <!--/ End Input Order -->
                           </div>
-                          <div class="add-to-cart">
+                          <div class="add-to-cart addtocard-item">
                             <a href="#" class="btn addtocartBtn" data-id="<?=$item->id?>" data-name="<?=$item->name?>" data-price="<?=$item->price?>" data-discount="<?=$item->discount?>" data-photo="<?=$item->photo?>" data-codeno="<?=$item->codeno?>" data-description="<?=$item->description?>" data-multi="multi">Add to cart</a>
                             <a href="#" class="btn min"><i class="ti-heart"></i></a>
                             <a href="#" class="btn min"><i class="fa fa-compress"></i></a>

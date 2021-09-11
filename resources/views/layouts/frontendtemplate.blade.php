@@ -63,36 +63,7 @@
     
     <!-- Header -->
     <header class="header shop">
-      <!-- Topbar -->
-      {{-- <div class="topbar">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-12 col-12">
-              <!-- Top Left -->
-              <div class="top-left">
-                <ul class="list-main">
-                  <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-                  <li><i class="ti-email"></i> support@shophub.com</li>
-                </ul>
-              </div>
-              <!--/ End Top Left -->
-            </div>
-            <div class="col-lg-8 col-md-12 col-12">
-              Top Right
-              <div class="right-content">
-                <ul class="list-main">
-                  <li><i class="ti-location-pin"></i> Store location</li>
-                  <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-                  <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                  <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
-                </ul>
-              </div>
-              <!-- End Top Right -->
-            </div>
-          </div>
-        </div>
-      </div> --}}
-      <!-- End Topbar -->
+
       <div class="middle-inner">
         <div class="container">
           <div class="row">
@@ -121,12 +92,7 @@
             <div class="col-lg-8 col-md-7 col-12">
               <div class="search-bar-top">
                 <div class="search-bar">
-                  {{-- <select>
-                    <option selected="selected">All Category</option>
-                    <option>watch</option>
-                    <option>mobile</option>
-                    <option>kid’s item</option>
-                  </select> --}}
+                  
                   <form action="#" method="get">
                     <div class="header-search-wrapper search-wrapper-wide">
                       <input name="search" placeholder="Search Products Here....." type="search" id="search">
@@ -148,43 +114,13 @@
                 <div class="sinlge-bar">
                   <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                 </div>
-                {{-- <div class="sinlge-bar">
-                  <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                </div> --}}
+                
 
                 <div class="sinlge-bar shopping">
                   <a href="{{route('frontend.cart')}}" class="single-icon"><i class="ti-bag"></i> 
                     <span class="count"> </span>
                   </a>
-                  <!-- Shopping Item -->
-                  <!--<div class="shopping-item">
-                    <div class="dropdown-cart-header">
-                      <span>2 Items</span>
-                      {{-- <a href="{{route('frontend.cart')}}">View Cart</a> --}}
-                    </div>
-                    <ul class="shopping-list">
-                      <li>
-                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                        <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                        <h4><a href="#">Woman Ring</a></h4>
-                        <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                      </li>
-                      <li>
-                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                        <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                        <h4><a href="#">Woman Necklace</a></h4>
-                        <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                      </li>
-                    </ul>
-                    <div class="bottom">
-                      <div class="total">
-                        <span>Total</span>
-                        <span class="total-amount">$134.00</span>
-                      </div>
-                      <a href="checkout.html" class="btn animate">Checkout</a>
-                    </div>
-                  </div> -->
-                  <!--/ End Shopping Item -->
+                  
                 </div>
 
                 {{-- user login --}}
@@ -208,20 +144,7 @@
                         <span> {{ Auth::user()->name }} </span>
                         {{-- <a href="{{route('frontend.cart')}}">View Cart</a> --}}
                       </div>
-                      {{-- <ul class="shopping-list">
-                        <li>
-                          <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                          <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                          <h4><a href="#">Woman Ring</a></h4>
-                          <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                        </li>
-                        <li>
-                          <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                          <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                          <h4><a href="#">Woman Necklace</a></h4>
-                          <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                        </li>
-                      </ul> --}}
+                      
                       <div class="bottom">
                         <div class="total">
                           <span>Total</span>
@@ -364,16 +287,16 @@
                   <div class="product-gallery">
                     <div class="quickview-slider-active">
                       <div class="single-slider">
-                        <img src="images/modal1.jpg" alt="#" class="img-fluid">
+                        <img src="#" alt="#" class="img-fluid">
                       </div>
                       <div class="single-slider">
-                        <img src="images/modal2.jpg" alt="#" class="img-fluid">
+                        <img src="#" alt="#" class="img-fluid">
                       </div>
                       <div class="single-slider">
-                        <img src="images/modal3.jpg" alt="#" class="img-fluid">
+                        <img src="#" alt="#" class="img-fluid">
                       </div>
                       <div class="single-slider">
-                        <img src="images/modal4.jpg" alt="#" class="img-fluid">
+                        <img src="#" alt="#" class="img-fluid">
                       </div>
                     </div>
                   </div>
@@ -401,28 +324,7 @@
                           <div class="quickview-peragraph mb-3">
                               <p id="item_description"> </p>
                           </div>
-                          {{-- <div class="size">
-                            <div class="row">
-                              <div class="col-lg-6 col-12">
-                                <h5 class="title">Size</h5>
-                                <select>
-                                  <option selected="selected">s</option>
-                                  <option>m</option>
-                                  <option>l</option>
-                                  <option>xl</option>
-                                </select>
-                              </div>
-                              <div class="col-lg-6 col-12">
-                                <h5 class="title">Color</h5>
-                                <select>
-                                  <option selected="selected">orange</option>
-                                  <option>purple</option>
-                                  <option>black</option>
-                                  <option>pink</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div> --}}
+                          
                           <div class="quantity">
                             <!-- Input Order -->
                             <div class="input-group">
@@ -440,7 +342,7 @@
                             </div>
                             <!--/ End Input Order -->
                           </div>
-                          <div class="add-to-cart">
+                          <div class="add-to-cart addtocard-item">
                             <a href="#" class="btn addtocartBtn" data-id="" data-name="" data-price="" data-discount="" data-photo="" data-codeno="" data-description="" data-multi="">Add to cart</a>
                             <a href="#" class="btn min"><i class="ti-heart"></i></a>
                             <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
@@ -565,7 +467,7 @@
   <!-- Bootstrap JS -->
   <script src="{{ asset('frontend/js/bootstrap.min.js')}}"></script>
   <!-- Color JS -->
-  <script src="{{ asset('frontend/js/colors.js')}}"></script>
+  {{-- <script src="{{ asset('frontend/js/colors.js')}}"></script> --}}
   <!-- Slicknav JS -->
   <script src="{{ asset('frontend/js/slicknav.min.js')}}"></script>
   <!-- Owl Carousel JS -->
@@ -600,8 +502,8 @@
     count();
     getData();
 
-    // $('#item_filter').on('click','.addtocartBtn',function(){
-    $('.addtocartBtn').on('click',function(){
+    $('.addtocard-item').on('click','.addtocartBtn',function(){
+    // $('.addtocartBtn').on('click',function(){
       // alert('hi');
       
       var id=$(this).data('id');
@@ -1106,7 +1008,6 @@
             $("#search-dropdown").removeClass("show");
         }
     });
-
 
 
   });

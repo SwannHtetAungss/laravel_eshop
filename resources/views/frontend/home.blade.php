@@ -189,7 +189,7 @@
                     <!-- Start Single Product -->
 
                     @foreach($allitems as $allitem)
-                    <div class="single-product">
+                    <div class="single-product addtocard-item">
                       <div class="product-img">
                         <a href="{{route('frontend.detail',$allitem->id)}}">
                           <img class="default-img" src="{{asset("storage/$allitem->photo")}}" alt="550x750">
@@ -244,7 +244,7 @@
 
           <!-- Start Single List  -->
           @foreach($onsales as $onsale)
-          <div class="single-list">
+          <div class="single-list addtocard-item">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
@@ -285,7 +285,7 @@
           @foreach($bestsellers as $bestseller)
             @foreach($allitems as $allitem)
               @if($allitem->id == $bestseller->item_id)
-                <div class="single-list">
+                <div class="single-list addtocard-item">
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
                       <div class="list-image overlay">
@@ -326,7 +326,7 @@
 
           <!-- Start Single List  -->
           @foreach($latest_items as $latest_item)
-          <div class="single-list">
+          <div class="single-list addtocard-item">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">

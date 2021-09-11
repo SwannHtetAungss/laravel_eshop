@@ -15,7 +15,7 @@
         <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
         <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
       </div>
-      <div class="product-action-2">
+      <div class="product-action-2 addtocard-item">
         <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="<?=$item->id?>" data-name="<?=$item->name?>" data-price="<?=$item->price?>" data-discount="<?=$item->discount?>" data-photo="<?=$item->photo?>" data-codeno="<?=$item->codeno?>" data-description="<?=$item->description?>">Add to cart</a>
       </div>
     </div>
