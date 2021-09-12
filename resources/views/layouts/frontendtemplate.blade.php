@@ -375,7 +375,7 @@
             <!-- Single Widget -->
             <div class="single-footer about">
               <div class="logo">
-                <a href="index.html"><img src="images/logo2.png" alt="#"></a>
+                <a href="index.html"><img src="{{asset('frontend/images/logo2.png')}}" alt="#"></a>
               </div>
               <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
               <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
@@ -448,7 +448,7 @@
             </div>
             <div class="col-lg-6 col-12">
               <div class="right">
-                <img src="images/payments.png" alt="#">
+                <img src="{{asset('frontend/images/payments.png')}}" alt="#">
               </div>
             </div>
           </div>
@@ -494,6 +494,9 @@
   <script src="{{ asset('frontend/js/easing.js')}}"></script>
   <!-- Active JS -->
   <script src="{{ asset('frontend/js/active.js')}}"></script>
+  <!-- Sweet Alert JS -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   {{-- <script type="text/javascript" src="{{ asset('frontend/js/cart.js')}}"></script> --}}
   <script type="text/javascript">
 
@@ -768,6 +771,17 @@
 
       $.post("/order-management/order",{data:shop_str,total:total},function(res){
         console.log(res);
+
+        if(res=="success"){
+
+          swal("Order Successfully !", "", "success")
+          
+        }
+
+        if(res=="fail"){
+          swal("Please Order Again !","","warning")
+          
+        }
 
         // remove LocalStorage
         localStorage.removeItem('eshop');

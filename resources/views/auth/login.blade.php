@@ -5,12 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center bg-dark"><h4 class="text-white">{{ __('Login') }}</h4></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        @php
+                            $uri = $_SERVER['HTTP_REFERER'];
+                        @endphp
+                        <input type="hidden" name="uri" value="{{$uri}}">
+                        
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -58,7 +62,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link btn-sm" href="{{ route('password.request') }}">
+                                    <a class="btn-link text-dark font-weight-bold" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

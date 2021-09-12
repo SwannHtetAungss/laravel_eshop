@@ -69,7 +69,11 @@
                     <li class="last">You Pay<span>$310.00</span></li> --}}
                   </ul>
                   <div class="button5">
-                    <a href="#" class="btn checkout" data-total="">Checkout</a>
+                    @guest
+                      <a href="{{route('login')}}" class="btn checkout">Checkout</a>
+                    @else
+                      <a href="#" class="btn checkout" data-total="">Checkout</a>
+                    @endguest
                     <a href="{{route('frontend.home')}}" class="btn">Continue shopping</a>
                   </div>
                 </div>
