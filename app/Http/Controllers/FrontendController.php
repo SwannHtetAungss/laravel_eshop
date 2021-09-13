@@ -16,8 +16,8 @@ class FrontendController extends Controller
         $items = Item::take(4)->get();
         $categories = Category::has('items')->get();
         $allitems = Item::all();
-        $onsales = Item::all()->random(4);
-
+        $discount_items = Item::whereNotNull('discount')->get();
+        
         $bestsellers = DB::table('item_order')
                      ->select('item_id', DB::raw('sum(qty) as total'))
                      ->groupBy('item_id')
@@ -27,13 +27,13 @@ class FrontendController extends Controller
 
         $latest_items = Item::orderby('id','desc')->take(4)->get();
         // dd($latest_items);
-        return view('frontend.home',compact('items','categories','allitems','onsales','bestsellers','latest_items'));
+        return view('frontend.home',compact('items','categories','allitems','discount_items','bestsellers','latest_items'));
     }
 
     public function shop($value='')
     {
         $categories = Category::has('items')->get();
-        $items = Item::all();
+        $items = Item::orderby('id','desc')->get();
         return view('frontend.shop',compact('categories','items'));
     }
 
@@ -51,6 +51,13 @@ class FrontendController extends Controller
         return ['subcategories'=>$subcategories,'items'=>$items];
     }
 
+    public function categoryAllFilter(Request $request)
+    {
+        $items = Item::orderby('id','desc')->get();
+
+        return ['items'=>$items];
+    }
+
     public function cart($value='')
     {
         return view('frontend.cart');
@@ -58,8 +65,13 @@ class FrontendController extends Controller
 
     public function detail($id)
     {
-        $item=Item::find($id);
-        return view('frontend.detail',compact('item'));
+        $item = Item::find($id);
+        $related_items = Item::where('brand_id',$item->brand_id)
+                        ->inRandomOrder()
+                        ->limit(4)
+                        ->get();
+        // dd($related_items);
+        return view('frontend.detail',compact('item','related_items'));
     }
 
 

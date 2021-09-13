@@ -41,6 +41,7 @@ Route::prefix('frontend')->group(function () {
   Route::get('cart', 'FrontendController@cart')->name('frontend.cart');
   Route::get('item/{id}', 'FrontendController@detail')->name('frontend.detail');
   Route::post('category-filter', 'FrontendController@categoryFilter')->name('frontend.category-filter');
+  Route::post('categoryAll-filter', 'FrontendController@categoryAllFilter')->name('frontend.category-Allfilter');
 });
 
 // Search

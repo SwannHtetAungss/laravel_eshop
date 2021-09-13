@@ -30,6 +30,11 @@
                   <ul class="categor-list">
                     @foreach($categories as $category)
                       <li>
+                        <a class="categoryAll_filter"> 
+                          All 
+                        </a>
+                      </li>
+                      <li>
                         <a class="category_filter" data-id="{{$category->id}}"> 
                           {{$category->name}} 
                         </a>
@@ -53,13 +58,13 @@
                     </div>
                     <ul class="check-box-list">
                       <li>
-                        <label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - $50<span class="count">(3)</span></label>
+                        <label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - $50<span class="count1">(3)</span></label>
                       </li>
                       <li>
-                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - $100<span class="count">(5)</span></label>
+                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - $100<span class="count1">(5)</span></label>
                       </li>
                       <li>
-                        <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - $250<span class="count">(8)</span></label>
+                        <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - $250<span class="count1">(8)</span></label>
                       </li>
                     </ul>
                   </div>
@@ -174,7 +179,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                   <div class="single-product">
                     <div class="product-img">
-                      <a href="product-details.html">
+                      <a href="{{route('frontend.detail',$item->id)}}">
                         <img class="default-img" src="{{asset('storage/'.$item->photo)}}" alt="550x750">
                         <img class="hover-img" src="{{asset('storage/'.$item->photo)}}" alt="550x750">
                       </a>

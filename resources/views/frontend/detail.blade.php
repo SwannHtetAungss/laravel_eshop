@@ -133,4 +133,33 @@
       </div>
     </section>
     <!--/ End Product Style 1  -->
+
+    <hr>
+
+    <!-- Start Related Items -->
+    
+      <div class="container mb-md-3" >
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title mt-2">
+              <h2>Related Items</h2>
+            </div>
+          </div>
+        </div>
+        {{-- <div class="single-list"> --}}
+          <div class="row">
+            @foreach($related_items as $related_item)
+            <div class="col-lg-3 col-md-6 col-12">
+              <div class="list-image">
+                <a href="{{route('frontend.detail',$related_item->id)}}">
+                  <img src="{{asset('storage/'.$related_item->photo)}}" alt="#">
+                </a>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        {{-- </div> --}}
+      </div>
+    
+    <!-- End Related Items -->
 @endsection

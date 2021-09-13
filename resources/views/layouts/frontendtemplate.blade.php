@@ -73,26 +73,27 @@
                 <a href="{{route('frontend.home')}}"><img src="{{ asset('frontend/images/logo.png')}}" alt="logo"></a>
               </div>
               <!--/ End Logo -->
+
               <!-- Search Form -->
               <div class="search-top">
                 <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                 <!-- Search Form -->
                 <div class="search-top">
-                  <form>
-                    <input type="text" placeholder="Search here..." name="search" id="">
+                  <form class="search-form">
+                    <input type="text" placeholder="Search here..." name="search">
                     <button value="search" type="submit"><i class="ti-search"></i></button>
                   </form>
                 </div>
                 <!--/ End Search Form -->
               </div>
               <!--/ End Search Form -->
+              
               <div class="mobile-nav"></div>
             </div>
 
             <div class="col-lg-8 col-md-7 col-12">
               <div class="search-bar-top">
                 <div class="search-bar">
-                  
                   <form action="#" method="get">
                     <div class="header-search-wrapper search-wrapper-wide">
                       <input name="search" placeholder="Search Products Here....." type="search" id="search">
@@ -794,7 +795,7 @@
       });
     });
 
-    // shop page filter process
+    // shop page Category filter process
     $(document).on("click",".category_filter",function(){
       // alert('hi');
       $.ajaxSetup({
@@ -822,7 +823,7 @@
               html +=`<div class="col-lg-4 col-md-6 col-12">
                 <div class="single-product">
                   <div class="product-img">
-                    <a href="product-details.html">
+                    <a href="item/${id}">
                       <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
                       <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
                     </a>
@@ -850,7 +851,7 @@
                 html +=`<div class="col-lg-4 col-md-6 col-12">
                 <div class="single-product">
                   <div class="product-img">
-                    <a href="product-details.html">
+                    <a href="item/${id}">
                       <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
                       <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
                     </a>
@@ -883,6 +884,83 @@
         
       });
     });
+    
+    // shop page All Category filter process
+    $(document).on("click",".categoryAll_filter",function(){
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      $.post("/frontend/categoryAll-filter",function(res){
+        var items = res.items;
+        var html='';
+
+        $.each(items,function(i,item){
+          var id = item.id;
+          
+          if(item.discount){
+            html +=`<div class="col-lg-4 col-md-6 col-12">
+              <div class="single-product">
+                <div class="product-img">
+                  <a href="item/${id}">
+                    <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                    <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                  </a>
+                  <div class="button-head">
+                    <div class="product-action">
+                      <a data-toggle="modal" class="modal-view" data-target="#exampleModal" title="Quick View" href="#" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-description="${item.description}" data-photo="${item.photo}" data-codeno="${item.codeno}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                      <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                      <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                    </div>
+                    <div class="product-action-2">
+                      <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-photo="${item.photo}" data-codeno="${item.codeno}" data-description="${item.description}">Add to cart</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-content">
+                  <h3><a href="item/${id}"> ${item.name} </a></h3>
+                  <div class="product-price">
+                    <span class="old"> $ ${item.price} </span>
+                    <span> $ ${item.discount} </span>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+          }else{
+            html +=`<div class="col-lg-4 col-md-6 col-12">
+            <div class="single-product">
+              <div class="product-img">
+                <a href="item/${id}">
+                  <img class="default-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                  <img class="hover-img" src="{{ asset('storage/${item.photo}') }}" alt="550x750">
+                </a>
+                <div class="button-head">
+                  <div class="product-action">
+                    <a data-toggle="modal" class="modal-view" data-target="#exampleModal" title="Quick View" href="#" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-description="${item.description}" data-photo="${item.photo}" data-codeno="${item.codeno}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                  </div>
+                  <div class="product-action-2">
+                    <a title="Add to cart" class="addtocartBtn text-decoration-none" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-discount="${item.discount}" data-photo="${item.photo}" data-codeno="${item.codeno}" data-description="${item.description}">Add to cart</a>
+                  </div>
+                </div>
+              </div>
+              <div class="product-content">
+                <h3><a href="item/${id}"> ${item.name} </a></h3>
+                <div class="product-price">
+                  <span> $ ${item.price} </span>
+                </div>
+              </div>
+            </div>
+          </div>`;
+          }
+        });
+
+        $('#item_filter').html(html);
+      });
+    });    
 
     // ID Modal Passing Data
     $(document).on("click",".modal-view",function(){

@@ -243,31 +243,31 @@
           <div class="row">
             <div class="col-12">
               <div class="shop-section-title">
-                <h1>On sale</h1>
+                <h1>Discount Items</h1>
               </div>
             </div>
           </div>
 
           <!-- Start Single List  -->
-          @foreach($onsales as $onsale)
+          @foreach($discount_items as $discount_item)
           <div class="single-list addtocard-item">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="{{asset("storage/$onsale->photo")}}" alt="#">
-                  <a title="Add to cart" class="addtocartBtn buy text-decoration-none" data-id="<?=$onsale->id?>" data-name="<?=$onsale->name?>" data-price="<?=$onsale->price?>" data-discount="<?=$onsale->discount?>" data-photo="<?=$onsale->photo?>" data-codeno="<?=$onsale->codeno?>" data-description="<?=$onsale->description?>">
+                  <img src="{{asset("storage/$discount_item->photo")}}" alt="#">
+                  <a title="Add to cart" class="addtocartBtn buy text-decoration-none" data-id="<?=$discount_item->id?>" data-name="<?=$discount_item->name?>" data-price="<?=$discount_item->price?>" data-discount="<?=$discount_item->discount?>" data-photo="<?=$discount_item->photo?>" data-codeno="<?=$discount_item->codeno?>" data-description="<?=$discount_item->description?>">
                     <i class="fa fa-shopping-bag"></i>
                   </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12 no-padding">
                 <div class="content">
-                  <h4 class="title"><a href="{{route('frontend.detail',$onsale->id)}}">{{$onsale->name}}</a></h4>
+                  <h4 class="title"><a href="{{route('frontend.detail',$discount_item->id)}}">{{$discount_item->name}}</a></h4>
                   <p class="price with-discount">
-                    @if($onsale->discount)
-                      ${{$onsale->discount}}
+                    @if($discount_item->discount)
+                      ${{$discount_item->discount}}
                     @else
-                      ${{$onsale->price}}
+                      ${{$discount_item->price}}
                     @endif
                   </p>
                 </div>
