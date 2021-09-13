@@ -96,7 +96,10 @@
                     $i = 1;
                   @endphp
                   @foreach($categories as $category)
-                    <li class="nav-item"><a class="nav-link @if($i==1){{'active'}} @endif" data-toggle="tab" href="#{{$category->name}}" role="tab">{{$category->name}}</a></li>
+                    @php
+                      $categoryName = str_replace(" ", "_", $category->name);
+                    @endphp
+                    <li class="nav-item"><a class="nav-link @if($i==1){{'active'}} @endif" data-toggle="tab" href="#{{$categoryName}}" role="tab">{{$category->name}}</a></li>
                     @php $i++; @endphp
                   @endforeach
 
@@ -114,7 +117,10 @@
                 @endphp
                 @foreach($categories as $category)
                 <!-- Start Single Tab -->
-                <div class="tab-pane fade @if($i==1){{'show active'}} @endif" id="{{$category->name}}" role="tabpanel">
+                @php
+                  $categoryName = str_replace(" ", "_", $category->name);
+                @endphp
+                <div class="tab-pane fade @if($i==1){{'show active'}} @endif" id="{{$categoryName}}" role="tabpanel">
                   <div class="tab-single">
                     <div class="row">
 
