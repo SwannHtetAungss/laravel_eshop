@@ -893,7 +893,7 @@
       var discount=$(this).data('discount');
       var description=$(this).data('description');
       var photo=$(this).data('photo');
-      var viewphoto="http://localhost:8000/storage/"+photo;
+      var viewphoto=`{{ asset('storage/${photo}') }}`;
       var codeno=$(this).data('codeno');
 
       // alert(photo);
