@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -71,7 +72,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('backend.order.detail');
+        $item_orders = DB::table('item_order')->where('order_id',$order->id)->get();
+        $items = $order->items;
+        return view('backend.order.detail',compact('item_orders','items','order'));
     }
 
     /**
@@ -94,7 +97,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        // dd($order);
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->route('order.index');
     }
 
     /**

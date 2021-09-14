@@ -626,7 +626,7 @@
                         <img src="{{ asset('storage/${v.photo}') }}" alt="#"></td>
                         <td class="product-des" data-title="Description">
                           <p class="product-name"><a href="#"> ${v.name} </a></p>
-                          <p class="product-des"> ${v.description} </p>
+                          <p class="product-des"></p>
                         </td>
                         <td class="price" data-title="Price"><span> ${v.discount} MMK </span></td>
                         <td class="qty" data-title="Qty"><!-- Input Order -->
@@ -654,7 +654,7 @@
                         <img src="{{ asset('storage/${v.photo}') }}" alt="#"></td>
                         <td class="product-des" data-title="Description">
                           <p class="product-name"><a href="#"> ${v.name} </a></p>
-                          <p class="product-des"> ${v.description} </p>
+                          <p class="product-des"></p>
                         </td>
                         <td class="price" data-title="Price"><span> ${v.price} MMK </span></td>
                         <td class="qty" data-title="Qty"><!-- Input Order -->
