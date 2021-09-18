@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
+use App\Mail\MyMail;
+
 class OrderController extends Controller
 {
     /**
@@ -16,9 +18,9 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-        $orders=Order::all();
-        return view('backend.order.index',compact('orders'));
+    {
+        $orders = Order::all();
+        return view('backend.order.index', compact('orders'));
     }
 
     /**
@@ -38,10 +40,10 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         // dd($request);
         DB::transaction(function () use ($request) {
-            $shop_arr=json_decode($request->data);
+            $shop_arr = json_decode($request->data);
             // dd($shop_arr);
             // return 'Success';
 
@@ -56,8 +58,8 @@ class OrderController extends Controller
             $order->save();
 
             // insert item_order
-            foreach($shop_arr as $item){
-                $order->items()->attach($item->id, ['qty'=>$item->qty]);
+            foreach ($shop_arr as $item) {
+                $order->items()->attach($item->id, ['qty' => $item->qty]);
             }
         });
 
@@ -72,9 +74,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $item_orders = DB::table('item_order')->where('order_id',$order->id)->get();
         $items = $order->items;
-        return view('backend.order.detail',compact('item_orders','items','order'));
+        return view('backend.order.detail', compact('items', 'order'));
     }
 
     /**
@@ -100,6 +101,26 @@ class OrderController extends Controller
         // dd($order);
         $order->status = $request->status;
         $order->save();
+
+        if ($request->status == 1) {
+            $details = [
+                'title' => 'Order Confirmed',
+                'customer_name' => $order->user->name,
+                'voucher_no' => $order->voucherno,
+                'order_date' => $order->orderdate,
+                'total' => $order->total,
+                'items' => $order->items
+            ];
+        } else {
+            $details = [
+                'title' => 'Order Cancelled',
+                'customer_name' => $order->user->name
+            ];
+        }
+
+
+        $receiver_email = $order->user->email;
+        \Mail::to($receiver_email)->send(new \App\Mail\MyMail($details));
 
         return redirect()->route('order.index');
     }

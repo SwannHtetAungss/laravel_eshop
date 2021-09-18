@@ -40,11 +40,11 @@
                                     </tr>
                                     <tr>
                                         <td>Customer Name : &nbsp;&nbsp;</td>
-                                        <td>Aung Aung</td>
+                                        <td>{{ $order->user->name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Customer Email : &nbsp;&nbsp;</td>
-                                        <td>aungaung@gmail.com</td>
+                                        <td>{{ $order->user->email }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -83,20 +83,20 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($item_orders as $item_order)
-                            @foreach ($items as $item)
-                                <tr class="text-center">
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item_order->qty }}</td>
-                                    @if ($item->discount)
-                                        <td>{{ $item_order->qty * $item->discount }}</td>
-                                    @else
-                                        <td>{{ $item_order->qty * $item->price }}</td>
-                                    @endif
-                                </tr>
-                            @endforeach
+
+                        @foreach ($items as $item)
+                            <tr class="text-center">
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->pivot->qty }}</td>
+                                @if ($item->discount)
+                                    <td>{{ $item->pivot->qty * $item->discount }}</td>
+                                @else
+                                    <td>{{ $item->pivot->qty * $item->price }}</td>
+                                @endif
+                            </tr>
                         @endforeach
+
                     </tbody>
                 </table>
 
