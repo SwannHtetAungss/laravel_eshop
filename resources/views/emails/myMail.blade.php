@@ -10,17 +10,20 @@
         font-weight: bold;
     }
 </style>
-<table border="0" cellpadding="0" cellspacing="0" style="padding:16px;background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+<table border="0" cellpadding="0" cellspacing="0"
+    style="padding:16px;background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
     <tbody>
         <tr>
             <td align="center">
-                <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding:16px;background-color: white; color: #454748; border-collapse:separate;">
+                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                    style="padding:16px;background-color: white; color: #454748; border-collapse:separate;">
                     <tbody>
                         <tr>
                             <td align="center" style="min-width:590px;">
                                 @if ($details['title'] == 'Order Confirmed')
                                 <h2 style="text-align:center;">ORDER CONFIRMATION</h2>
-                                <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                    style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
                                     <tbody>
                                         <tr>
                                             <td valign="top" style="font-size:13px;">
@@ -65,7 +68,8 @@
                                                                     <td>
                                                                         @if ($item->discount)
                                                                         @php
-                                                                        $dis_price = $item->discount * $item->pivot->qty;
+                                                                        $dis_price = $item->discount *
+                                                                        $item->pivot->qty;
                                                                         @endphp
                                                                         {{ number_format($dis_price) }} Ks
                                                                         @else
@@ -97,14 +101,16 @@
                                 </table>
                                 @elseif($details['title']=="Order Cancelled")
                                 <h2 style="text-align:center;">Your Order is cancelled!</h2>
-                                <table border="0" cellpadding="0" cellspacing="0" width="500" style="min-width:500px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="500"
+                                    style="min-width:500px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
                                     <tbody>
                                         <tr>
                                             <td valign="top" style="font-size:13px;">
                                                 <div>
                                                     Dear {{ $details['customer_name'] }},<br>
                                                     We've cancelled your order. If you need any further information,
-                                                    please contact to <span class="my-link">nwayooaungr2p@gmail.com</span>.
+                                                    please contact to <span
+                                                        class="my-link">eshopmyanmar.shop@gmail.com</span>.
                                                 </div>
                                             </td>
                                         </tr>
